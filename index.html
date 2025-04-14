@@ -45,7 +45,8 @@
         tg.expand();
 
         alert(tg.initDataUnsafe.user.username);
-        // document.getElementById("username-tg").innerHTML = tg.WebAppUser.username;
+        document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
+        document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
