@@ -42,10 +42,10 @@
     </style>
     <script>
         let tg = window.Telegram.WebApp;
-        // tg.expand();
+        tg.expand();
 
-        document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name
-        document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username
+        document.getElementById("firstname-tg").innerHTML = tg.WebAppUser.first_name
+        document.getElementById("username-tg").innerHTML = tg.WebAppUser.username
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
