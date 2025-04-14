@@ -44,8 +44,7 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        alert("tg.WebAppUser.first_name");
-        alert(tg.WebAppUser.first_name);
+        alert(tg.initDataUnsafe.user.username);
         // document.getElementById("username-tg").innerHTML = tg.WebAppUser.username;
 
         async function dd(){
@@ -62,7 +61,7 @@
 
         tg.MainButton.show();
         tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(dd());
+        // tg.MainButton.onClick(dd());
         
     </script>
     <body>
