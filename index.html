@@ -42,11 +42,12 @@
     </style>
     <script>
         let tg = window.Telegram.WebApp;
+        tg.requestFullscreen();
         tg.expand();
 
         alert(tg.initDataUnsafe.user.username);
-        document.getElementById("username-tg").text = `${tg.initDataUnsafe.user.username}`;
-        document.getElementById("firstname-tg").text = `${tg.initDataUnsafe.user.first_name}`;
+        //document.getElementById("username-tg").text = `${tg.initDataUnsafe.user.username}`;
+        //document.getElementById("firstname-tg").text = `${tg.initDataUnsafe.user.first_name}`;
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
