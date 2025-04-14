@@ -44,8 +44,8 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        document.getElementById("firstname-tg").innerHTML = tg.WebAppUser.first_name
-        document.getElementById("username-tg").innerHTML = tg.WebAppUser.username
+        alert(tg.WebAppUser.first_name);
+        // document.getElementById("username-tg").innerHTML = tg.WebAppUser.username;
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
@@ -58,10 +58,6 @@
                 alert(location_data.speed);
             });
         }
-
-        let url = 'https://functions.yandexcloud.net/d4eemue55q3h8oonv4no';
-        
-        // var data = JSON.stringify("ДАННЫЕ_ДЛЯ ОТПРАВКИ");
 
         tg.MainButton.show();
         tg.MainButton.setText("Оплатить");
