@@ -26,28 +26,6 @@
             left: 0px;
             text-align: center;
         }
-
-        .header-panel{
-            position: relative;
-            width: 100%;
-            height: 80px;
-            background-color:rgb(214, 211, 211);
-            top: 70px;
-            border-radius: 50px;
-        }
-
-        #photo-profile{
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            right: 15px;
-            top: 10px;
-            border-radius: 60px;
-            -webkit-box-shadow: 0px 6px 8px 5px rgba(34, 60, 80, 0.2);
-            -moz-box-shadow: 0px 6px 8px 5px rgba(34, 60, 80, 0.2);
-            box-shadow: 0px 6px 8px 5px rgba(34, 60, 80, 0.2);
-
-        }
     </style>
     <script>
         let tg = window.Telegram.WebApp;
@@ -64,18 +42,28 @@
                 alert(location_data.speed);
             });
         }
+
+        tg.MainButton.show();
+        tg.MainButton.setText("Оплатить");
+        tg.MainButton.onClick(() => {
+            console.log("start");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("X-Custom-Info", "getOpenInvoiceUrl");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    tg.openInvoice(xhr.responseText);
+                }
+            };
+            xhr.send();
+        });
         
     </script>
     <body>
     <header class="upper-panel">
-        <h1>Home</h1>
+        <h1></h1>
     </header>
-    <br>
-    <div class="header-panel">
-        <div id="photo-profile">
-            <img src="1.png" alt="" style="width: 60px; height: 60px;">
-        </div>
-    </div>
     <button type="submit" style="position: absolute; bottom: 100px; width: 100%; left: 0%; height: 70px;" onclick="dd()">GGGGG</button>
     </body>
 </html>
