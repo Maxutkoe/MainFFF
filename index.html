@@ -55,6 +55,7 @@
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
+                tg.LocationManager.init();
                 return alert('Location not inited yet!');
             }
 
