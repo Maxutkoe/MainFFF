@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Gidole&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
     </head>
     <style>
         *{
@@ -48,6 +49,22 @@
 
         }
     </style>
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        async function dd(){
+            if (!tg.LocationManager.isInited) {
+                return alert('Location not inited yet!');
+            }
+
+            tg.LocationManager.getLocation(function(location_data){
+                alert(location_data);
+                alert(location_data.speed);
+            });
+        }
+        
+    </script>
     <body>
     <header class="upper-panel">
         <h1>Home</h1>
@@ -58,5 +75,6 @@
             <img src="1.png" alt="" style="width: 60px; height: 60px;">
         </div>
     </div>
+    <button type="submit" style="position: absolute; bottom: 100px; width: 100%; left: 0%; height: 70px;" onclick="dd()">GGGGG</button>
     </body>
 </html>
