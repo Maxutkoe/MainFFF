@@ -88,7 +88,27 @@
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Оплатить");
         tg.MainButton.onClick(function(){
-            dd();
+            //dd();
+            const transaction = {
+                validUntil: Math.round(Date.now() / 1000) + 100,
+                messages: [
+                    {
+                        address: "UQCwZJMC1YRv_kG2Q6CF0H74t3IcWrRjJn1aE4nDWYj_ILUp",
+                        amount: 2500000000, //250000000 - 0.25 TON
+                    }
+                ]
+            };
+
+            try{
+                await tonConnectUI.sendTransaction(transaction);
+                tg.showAlert("Успешно оплачено!");
+            }
+            catch(e){
+                tg.showAlert("Оплата не прошла");
+                console.error(e);
+            }
+            
+            
         });
 
         document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
@@ -100,7 +120,7 @@
 
         tg.ready()
 
-        let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
+        // let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
 
         // alert(tg.initDataUnsafe.user.photo_url);
         async function dd(){
