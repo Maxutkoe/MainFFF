@@ -59,10 +59,22 @@
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
         tg.expand();
+        
+        tg.SettingsButton.show();
+        tg.onEvent('settingsButtonClicked', function(){
+            tg.showAlert("Настройки");
+        });
+        tg.MainButton.show();
+        tg.MainButton.setText("Оплатить");
+        tg.MainButton.onClick(function(){
+            dd();
+        });
 
         document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
         document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
         document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
+
+        tg.ready()
 
         let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
 
@@ -80,12 +92,6 @@
                 document.getElementById("firstname-tg").innerHTML = location_data.speed + " M/s";
             });
         }
-
-        tg.MainButton.show();
-        tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(function(){
-            dd();
-        });
         
     </script>
     <script>
