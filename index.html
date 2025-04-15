@@ -216,7 +216,7 @@ backdrop-filter: blur(17.6px);
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
         tg.expand();
-        const wallet = tonConnectUI.wallet.account.address;
+        // const wallet = tonConnectUI.wallet.account.address;
         
         tg.SettingsButton.show();
         tg.onEvent('settingsButtonClicked', function(){
@@ -298,10 +298,6 @@ backdrop-filter: blur(17.6px);
 
         tonConnectUI.uiOptions = {
             twaReturnUrl: 'https://t.me/pupmupsbot/pump',
-            uiPreferences: {
-                borderRadius: 's',
-                theme: "DARK"
-            },
         };
     </script>
 </html>
