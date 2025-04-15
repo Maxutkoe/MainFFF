@@ -48,9 +48,9 @@
         <h1></h1>
     </div>
     <div class="profile-up">
-        <img src="1.png" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
-        <h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg"></h1>
-        <h3 style="position: absolute; top: 10px; left: 55px; font-size: 15px;" id="username-tg"></h1>
+        <img src="1.png" id="profile-img" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
+        <b><h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg">//...</h1></b>
+        <h3 style="position: absolute; top: 18px; left: 55px; font-size: 12px;" id="username-tg">lTheMkl</h1>
         <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>
     </div>
 
@@ -63,7 +63,7 @@
         alert(tg.initDataUnsafe.user.photo_url);
         document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
         document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
-        // document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;
+        document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
