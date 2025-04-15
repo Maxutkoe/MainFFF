@@ -93,11 +93,14 @@
         document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
         document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
 
+        tg.bottom_bar_bg_color = "#FFFFFF";
+        tg.button_color = "#FFFFFF";
+
         tg.ready()
 
         let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
 
-        alert(tg.initDataUnsafe.user.photo_url);
+        // alert(tg.initDataUnsafe.user.photo_url);
         async function dd(){
             if (!tg.LocationManager.isInited) {
                 tg.LocationManager.init();
