@@ -57,6 +57,21 @@
             background-image: url("img1.jpg");
             background-size: cover;
         }
+
+        .ad-block{
+            margin: 25px 10px 10px 10px;
+            min-width: 60%;
+            max-width: 400px;
+            height: 80px;
+            border: 0px solid #000;
+            border-radius: 15px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            position: relative;
+            background-image: url("ad1.jpg");
+            background-size: cover;
+        }
     </style>
     <body>
     <div class="upper-panel">
@@ -71,6 +86,13 @@
     <div class="main-block">
         <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">30 дней</h1>
         <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Кардио | 30 минут | 3 раза в неделю</h1>
+    </div>
+    <div class="ad-block">
+        <h1 style="position: absolute; bottom: 18px; left: 15px; font-size: 25px; color: white; font-weight: 800;">Реклама</h1>
+    </div>
+    <div class="main-block">
+        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">10 дней</h1>
+        <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Full | 2 часа | 2 раза в неделю</h1>
     </div>
 
     </body>
@@ -87,7 +109,7 @@
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(function(){
+        tg.MainButton.onClick(async function(){
             //dd();
             const transaction = {
                 validUntil: Math.round(Date.now() / 1000) + 100,
@@ -120,7 +142,7 @@
 
         tg.ready()
 
-        // let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
+        let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
 
         // alert(tg.initDataUnsafe.user.photo_url);
         async function dd(){
