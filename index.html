@@ -9,9 +9,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Gidole&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
         <style src="https://yarnpkg.com/en/package/normalize.css"></style>
+
     </head>
-    <style>
+<style>
         *{
             font-family: "Gidole", sans-serif;
             font-weight: 400;
@@ -45,9 +47,9 @@
         tg.requestFullscreen();
         tg.expand();
 
-        //alert(tg.initDataUnsafe.user.username);
-        //document.getElementById("username-tg").text = `${tg.initDataUnsafe.user.username}`;
-        //document.getElementById("firstname-tg").text = `${tg.initDataUnsafe.user.first_name}`;
+        // alert(tg.initDataUnsafe.user.username);
+        // document.getElementById("username-tg").text = `${tg.initDataUnsafe.user.username}`;
+        // document.getElementById("firstname-tg").text = `${tg.initDataUnsafe.user.first_name}`;
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
@@ -58,6 +60,8 @@
             tg.LocationManager.getLocation(function(location_data){
                 alert(location_data);
                 alert(location_data.speed);
+
+                document.getElementById("firstname-tg").innerHTML = location_data.speed
             });
         }
 
@@ -71,9 +75,31 @@
         <h1></h1>
     </div>
     <div class="profile-up">
+        <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 15px;"></div>
         <h1 style="position: absolute; top: 0px; left: 30px; font-size: 20px;" id="firstname-tg">Max</h1>
         <h3 style="position: absolute; top: 10px; left: 30px; font-size: 20px;" id="username-tg">TheMk</h1>
     </div>
 
     </body>
+    <script>
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/MainFFF/refs/heads/main/tonconnect-manifest.json',
+            buttonRootId: 'ton-connect'
+        });
+
+        async function connectToWallet() {
+            const connectedWallet = await tonConnectUI.connectWallet();
+            // Do something with connectedWallet if needed
+            console.log(connectedWallet);
+        }
+
+        // Call the function
+        connectToWallet().catch(error => {
+            console.error("Error connecting to wallet:", error);
+        });
+
+        tonConnectUI.uiOptions = {
+            twaReturnUrl: 'https://t.me/pupmupsbot/pump'
+        };
+    </script>
 </html>
