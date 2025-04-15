@@ -49,8 +49,9 @@
         tg.expand();
 
         // alert(tg.initDataUnsafe.user.username);
-        // document.getElementById("username-tg").text = `${tg.initDataUnsafe.user.username}`;
-        // document.getElementById("firstname-tg").text = `${tg.initDataUnsafe.user.first_name}`;
+        document.getElementById("username-tg").text = tg.initDataUnsafe.user.username + "";
+        document.getElementById("firstname-tg").text = tg.initDataUnsafe.user.first_name + "";
+        document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url + "";
 
         async function dd(){
             if (!tg.LocationManager.isInited) {
@@ -59,8 +60,8 @@
             }
 
             tg.LocationManager.getLocation(function(location_data){
-                alert(location_data);
-                alert(location_data.speed);
+                // alert(location_data);
+                // alert(location_data.speed);
 
                 document.getElementById("firstname-tg").innerHTML = location_data.speed + " M/s";
             });
@@ -78,9 +79,10 @@
         <h1></h1>
     </div>
     <div class="profile-up">
+        <img src="1.png" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
+        <h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg">Max</h1>
+        <h3 style="position: absolute; top: 10px; left: 55px; font-size: 15px;" id="username-tg">TheMk</h1>
         <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>
-        <h1 style="position: absolute; top: -5px; left: 30px; font-size: 20px;" id="firstname-tg">Max</h1>
-        <h3 style="position: absolute; top: 0px; left: 30px; font-size: 20px;" id="username-tg">TheMk</h1>
     </div>
 
     </body>
