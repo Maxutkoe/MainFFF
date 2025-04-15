@@ -226,7 +226,7 @@ backdrop-filter: blur(17.6px);
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Оплатить");
-        tg.MainButton.onClick(async function(){
+        /*tg.MainButton.onClick(async function(){
             //dd();
             const transaction = {
                 validUntil: Math.round(Date.now() / 1000) + 100,
@@ -248,7 +248,7 @@ backdrop-filter: blur(17.6px);
             }
             
             
-        });
+        });*/
 
         document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
         document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
