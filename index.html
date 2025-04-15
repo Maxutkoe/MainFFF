@@ -43,6 +43,18 @@
             box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
         }
     </style>
+    <body>
+    <div class="upper-panel">
+        <h1></h1>
+    </div>
+    <div class="profile-up">
+        <img src="1.png" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
+        <h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg"></h1>
+        <h3 style="position: absolute; top: 10px; left: 55px; font-size: 15px;" id="username-tg"></h1>
+        <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>
+    </div>
+
+    </body>
     <script>
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
@@ -74,18 +86,6 @@
         });
         
     </script>
-    <body>
-    <div class="upper-panel">
-        <h1></h1>
-    </div>
-    <div class="profile-up">
-        <img src="1.png" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
-        <h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg">Max</h1>
-        <h3 style="position: absolute; top: 10px; left: 55px; font-size: 15px;" id="username-tg">TheMk</h1>
-        <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>
-    </div>
-
-    </body>
     <script>
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/MainFFF/refs/heads/main/tonconnect-manifest.json',
