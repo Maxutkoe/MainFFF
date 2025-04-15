@@ -84,6 +84,8 @@
             tg.showAlert("Настройки");
         });
         tg.MainButton.show();
+        tg.MainButton.color = "#000";
+        tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Оплатить");
         tg.MainButton.onClick(function(){
             dd();
@@ -93,8 +95,8 @@
         document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
         document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
 
-        tg.bottom_bar_bg_color = "#FFFFFF";
-        tg.button_color = "#FFFFFF";
+        tg.setHeaderColor("#fff");
+        tg.setBottomBarColor("#fff");
 
         tg.ready()
 
