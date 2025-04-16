@@ -316,7 +316,7 @@
             width: 150px;
             height: 150px;
             border: 2px solid #000;
-            border-radius: 15px;
+            border-radius: 12px;
             -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
@@ -365,17 +365,29 @@
 
     </div>
 
-    <div id="news-main-block" style="background-color: transparent; overflow-y: none; overflow-x: hidden; white-space: nowrap;">
+    <div id="news-main-block" style="background-color: transparent; overflow-y: none; overflow-x: auto; white-space: nowrap;">
         <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-color: #fff; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренировки</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Начинающий | Средний | Сложный</h1>
+            <div style="width: 100%; height: 90px; background-image: url('img2.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
+                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Названы шесть при...</h1>
+                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Эксперты журнала Men Today назва...</h1>
             </div>
         </div>
         <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-color: #fff; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренировки</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Начинающий | Средний | Сложный</h1>
+            <div style="width: 100%; height: 90px; background-image: url('img3.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
+                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренер предупредила...</h1>
+                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Тренер по балету и растяжке Акулина...</h1>
+            </div>
+        </div>
+        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
+            <div style="width: 100%; height: 90px; background-image: url('img4.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
+                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Названы шесть при...</h1>
+                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Эксперты журнала Men Today назва...</h1>
+            </div>
+        </div>
+        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
+            <div style="width: 100%; height: 90px; background-image: url('img1.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
+                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренер предупредила...</h1>
+                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Тренер по балету и растяжке Акулина...</h1>
             </div>
         </div>
         <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
@@ -434,6 +446,7 @@
                     }
             }
             api.send();
+            // NewsUpdate();
 
             }, 1000);
         }
@@ -545,6 +558,22 @@
             });
 
         }
+
+        /*async function NewsUpdate(){
+            for(let i = 0; i < 5; i++){
+                let newsMainBlock = document.getElementById("news-main-block");
+                const newsBlock = document.createElement('div');
+                newsMainBlock.appendChild(newsBlock);
+                newsBlock.className = "news-block";
+                newsBlock.onClick = tg.openLink("https://t.me/TheMkStudio");
+                newsBlock.innerHTML = `
+                <div style="width: 100%; height: 90px; background-image: url('img1.jpg'); background-size: cover; border-radius: 9.5px 9.5px 0px 0px; border-bottom: 2px solid #000; ">
+                    <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренировки</h1>
+                    <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Начинающий | Средний | Сложный</h1>
+                </div>
+                `;
+            }
+        }*/
 
         /*function UpdateBalance(){
             let full = document.getElementById('ton-balance-full'),
