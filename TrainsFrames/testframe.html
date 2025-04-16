@@ -385,6 +385,13 @@
         tg.setHeaderColor("#fff");
         tg.setBottomBarColor("#fff");
 
+        tg.BackButton.onClick(function(){
+                location.href = "./index.html";
+            });
+        tg.onEvent('backButtonClicked', function(){
+            location.href = "./index.html";
+        });
+
         tg.ready();
 
         let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
@@ -403,6 +410,19 @@
                 document.getElementById("firstname-tg").innerHTML = location_data.speed + " M/s";
             });
         }
+
+        function Frame(frame){
+            location.href = `./TrainsFrames/${frame}.html`
+            tg.BackButton.show();
+            tg.BackButton.onClick(function(){
+                location.href = "./index.html";
+            });
+            tg.onEvent('backButtonClicked', function(){
+                location.href = "./index.html";
+            });
+
+        }
+
         
     </script>
 
