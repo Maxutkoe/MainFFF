@@ -426,7 +426,10 @@
             location.href = `./TrainsFrames/${frame}.html`
             tg.BackButton.show();
             tg.BackButton.onClick(function(){
-                location.href = `./index.html`
+                location.href = "/index.html";
+            });
+            tg.onEvent('backButtonClicked', function(){
+                location.href = "/index.html";
             });
 
         }
