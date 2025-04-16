@@ -316,8 +316,8 @@
         </div>
 
         <h1 style="position: absolute; top: 18px; left: 25px; font-size: 20px; color: white; font-weight: 500;">₽</h1>
-        <h1 style="position: absolute; top: -5px; left: 37px; font-size: 45px; color: white; font-weight: 900;">20
-        <h1 style="position: absolute; top: 13px; left: 85px; font-size: 35px; color: #828282; font-weight: 700;">.55</h1></h1>
+        <h1 style="position: absolute; top: -5px; left: 37px; font-size: 45px; color: white; font-weight: 900;" id="ton-balance-full">20
+        <h1 style="position: absolute; top: 13px; left: 85px; font-size: 35px; color: #828282; font-weight: 700;" id="ton-balance-decimal">.55</h1></h1>
 
         <div class="buttons-bg-deposit">
             <button type="submit" id="send-deposit-button"><img src="arrow-up-black.png" alt="" style="width: 30xp; height: 30px; margin: 3px 1px 0px 0px;"></button>
@@ -358,11 +358,66 @@
     </div>
 
     </body>
+
     <script>
+      const truncateToTwo = num => Math.floor(num * 100) / 100;
+      let balance = 0;
+
+        window.onload = function(){
+            setTimeout(function(){
+                let api = new XMLHttpRequest();
+		        const wallet = tonConnectUI.wallet.account.address;//'UQANL1PP96rxkyGZfo-pgGd6m3tBdpwlz9EFR2scmW7xQaKd';//getRandomWallet();
+		        console.log(wallet);
+                const url = `https://tonapi.io/v2/accounts/${wallet}`;//https://tonapi.io/v2/blockchain/accounts/${wallet}/transactions`; //UQANL1PP96rxkyGZfo-pgGd6m3tBdpwlz9EFR2scmW7xQaKd
+
+                api.open('GET', url, true);
+                api.responseType = "json";
+                api.onload = function(){
+                    const status = api.status;
+                    if(status == 200){
+                        console.log(api.response);
+                        balance = api.response.balance / 1000000000;
+                        console.log(truncateToTwo(balance) + " TON");
+                    }
+                    else{
+                        tg.showAlert("НЕ");
+                        console.log("НЕ");
+                    }
+            }
+            api.send();
+
+            }, 1000);
+        }
+
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/MainFFF/refs/heads/main/tonconnect-manifest.json',
+            buttonRootId: 'ton-connect'
+        });
+
+        async function connectToWallet() {
+            const connectedWallet = await tonConnectUI.connectWallet();
+            // Do something with connectedWallet if needed
+            console.log(connectedWallet);
+        }
+
+        // Call the function
+        connectToWallet().catch(error => {
+            console.error("Error connecting to wallet:", error);
+        });
+
+        tonConnectUI.uiOptions = {
+            twaReturnUrl: 'https://t.me/pupmupsbot/pump',
+            uiPreferences: {
+                borderRadius: 's',
+                theme: "DARK"
+            },
+        };
+
+    
+        
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
         tg.expand();
-        // const wallet = tonConnectUI.wallet.account.address;
         
         tg.SettingsButton.show();
         tg.onEvent('settingsButtonClicked', function(){
@@ -405,6 +460,7 @@
 
         tg.ready();
 
+
         let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
 
         // alert(tg.initDataUnsafe.user.photo_url);
@@ -433,33 +489,18 @@
             });
 
         }
+
+        /*function UpdateBalance(){
+            let full = document.getElementById('ton-balance-full'),
+            decimal = document.getElementById('ton-balance-decimal'),
+            text = `${balance}`,
+            parts = text.split('.');
+
+            full.innerHTML = '' + parts[0];
+            decimal.innerHTML = '.' + (parts[1] || 0);
+            console.log(text);
+            console.log('.' + (parts[1] || 0));
+        }*/
         
-    </script>
-
-    
-    <script>
-        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/MainFFF/refs/heads/main/tonconnect-manifest.json',
-            buttonRootId: 'ton-connect'
-        });
-
-        async function connectToWallet() {
-            const connectedWallet = await tonConnectUI.connectWallet();
-            // Do something with connectedWallet if needed
-            console.log(connectedWallet);
-        }
-
-        // Call the function
-        connectToWallet().catch(error => {
-            console.error("Error connecting to wallet:", error);
-        });
-
-        tonConnectUI.uiOptions = {
-            twaReturnUrl: 'https://t.me/pupmupsbot/pump',
-            uiPreferences: {
-                borderRadius: 's',
-                theme: "DARK"
-            },
-        };
     </script>
 </html>
