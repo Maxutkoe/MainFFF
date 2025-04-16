@@ -12,8 +12,6 @@
         <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
         <style src="https://yarnpkg.com/en/package/normalize.css"></style>
-        <script>window.yaContextCb=window.yaContextCb||[]</script>
-        <script src="https://yandex.ru/ads/system/context.js" async></script>
 
     </head>
 <style>
@@ -261,12 +259,12 @@
             -webkit-backdrop-filter: blur(17.6px);
         }
 
-        .info-deposity-button{
-            width: 120px;
+        .ton-deposity-button{
+            width: 60px;
             z-index: 0;
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 115px;
+            left: 145px;
             height: 56px;
             border: 0px solid #000;
             border-radius: 12px;
@@ -307,53 +305,13 @@
     </div>
 
 
-
-    <div class="deposit-block">
-        <div class="deposity-button"></div>
-        <div class="info-deposity-button">
-            <h1 style="position: absolute; top: 0px; left: 10px; font-size: 10px; color: #828282; font-weight: 500;">Вы прошли</h1>
-            <h1 style=" position: absolute; top: 4px; left: 10px; font-size: 25px; color: white; font-weight: 500;">1000м</h1>
-        </div>
-
-        <h1 style="position: absolute; top: 18px; left: 25px; font-size: 20px; color: white; font-weight: 500;">₽</h1>
-        <h1 style="position: absolute; top: -5px; left: 37px; font-size: 45px; color: white; font-weight: 900;">20
-        <h1 style="position: absolute; top: 13px; left: 85px; font-size: 35px; color: #828282; font-weight: 700;">.55</h1></h1>
-
-        <div class="buttons-bg-deposit">
-            <button type="submit" id="send-deposit-button"><img src="arrow-up-black.png" alt="" style="width: 30xp; height: 30px; margin: 3px 1px 0px 0px;"></button>
-            <button type="submit" id="get-deposit-button"><img src="arrow-sm-down-black.png" alt="" style="width: 30xp; height: 30px; margin: 3px 1px 0px 0px;"></button>
-            <button type="submit" id="withdraw-deposit-button"><img src="withdraw-svgrepo-com-black.png" alt="" style="width: 30xp; height: 30px; margin: 6px 1px 0px 0px;"></button>
-        </div>
-
-        <button type="submit" onclick="start()" class="deposit-button">
-            <h1 style="position: absolute; top: -3px; left: 10px; font-size: 14px; color: #828282;">Задания</h1>
-            <h1 style="position: absolute; top: 13px; left: 15px; font-size: 17px; color: #fff;">3 задания...<a href="#10days"><img src="arrow-up-right-svgrepo-com.png" alt="" style="width: 15xp; height: 15px; "></a></h1>
-            <h1 style="position: absolute; top: 33px; left: 15px; font-size: 17px; color: #fff;">5 упражнений...<a href="#10days"><img src="arrow-up-right-svgrepo-com.png" alt="" style="width: 15xp; height: 15px; "></a></h1>
-            <h1 style="position: absolute; top: 53px; left: 15px; font-size: 17px; color: #fff;">3 задания...<a href="#10days"><img src="arrow-up-right-svgrepo-com.png" alt="" style="width: 15xp; height: 15px; "></a></h1>
-        </button>
-
-        
-
+    <div class="main-block">
+        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">30 дней</h1>
+        <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Кардио | 30 минут | 3 раза в неделю</h1>
     </div>
-
-
-
-    <div class="main-block" onclick="Frame('testframe')">
-        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">Тренировки</h1>
-        <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Начинающий | Средний | Сложный</h1>
-    </div>
-
-
-
-    <div class="ad-block">
-        <h1 style="position: absolute; bottom: 18px; left: 15px; font-size: 25px; color: white; font-weight: 800;">Реклама</h1>
-    </div>
-
-
-
 
     <div class="main-block" id="10days">
-        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">Скоро</h1>
+        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">10 дней</h1>
         <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Full | 2 часа | 2 раза в неделю</h1>
     </div>
 
@@ -420,15 +378,6 @@
 
                 document.getElementById("firstname-tg").innerHTML = location_data.speed + " M/s";
             });
-        }
-
-        function Frame(frame){
-            location.href = `./TrainsFrames/${frame}.html`
-            tg.BackButton.show();
-            tg.BackButton.onClick(function(){
-                location.href = `./index.html`
-            });
-
         }
         
     </script>
