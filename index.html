@@ -12,6 +12,8 @@
         <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
         <style src="https://yarnpkg.com/en/package/normalize.css"></style>
+        <script>window.yaContextCb=window.yaContextCb||[]</script>
+        <script src="https://yandex.ru/ads/system/context.js" async></script>
 
     </head>
 <style>
@@ -200,7 +202,16 @@ backdrop-filter: blur(17.6px);
 
 
     <div class="ad-block">
-        <h1 style="position: absolute; bottom: 18px; left: 15px; font-size: 25px; color: white; font-weight: 800;">Реклама</h1>
+        <!--<h1 style="position: absolute; bottom: 18px; left: 15px; font-size: 25px; color: white; font-weight: 800;">Реклама</h1>-->
+        <div id="yandex_rtb_R-A-15100004-1"></div>
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-15100004-1",
+        "renderTo": "yandex_rtb_R-A-15100004-1"
+    })
+})
+</script>
     </div>
 
 
@@ -225,7 +236,7 @@ backdrop-filter: blur(17.6px);
         tg.MainButton.show();
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
-        tg.MainButton.setText("Оплатить");
+        tg.MainButton.setText("Перейти");
         tg.MainButton.onClick(async function(){
             //dd();
             const transaction = {
