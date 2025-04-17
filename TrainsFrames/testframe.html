@@ -28,7 +28,7 @@
 
         *::-webkit-scrollbar {
 	        background-color: transparent;
-	        width: 12px;
+	        width: 0px;
         }
 
         *::-webkit-scrollbar-thumb {
@@ -73,6 +73,24 @@
             box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
         }
 
+        @keyframes move-up {
+            0% {
+                transform: translateY(1000px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes move-down {
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(1000px);
+            }
+        }
+
         .train-description-block{
             position: fixed;
             width: 100%;
@@ -92,14 +110,18 @@
             backdrop-filter: blur(14.3px);
             -webkit-backdrop-filter: blur(14.3px);
             overflow-y: auto;
+            animation: move-up 0.5s ease;
+            /*transition: transform 1s ease-in;*/
         }
 
         .train-finish-block{
             position: relative;
-            min-width: 50%;
+            min-width: 95%;
             max-width: 400px;
             height: 60px;
             text-align: center;
+            position: absolute;
+            bottom: 10px;
             background-color:rgb(109, 210, 37);
             border-radius: 15px;
             margin: 50px 10px 10px 10px;
@@ -377,34 +399,38 @@
         <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Кардио | 30 минут | 3 раза в неделю</h1>
     </div>
 
-    <div class="train-block" onclick="document.getElementById('ghgh').style.display = 'block'">
+    <div class="train-block"">
         <svg style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; left: 15px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 1C4.34314 1 3 2.34315 3 4V20C3 21.6569 4.34315 23 6 23H19C20.6569 23 22 21.6569 22 20V10C22 9.73478 21.8946 9.48043 21.7071 9.29289L13.7071 1.29292C13.6114 1.19722 13.4983 1.1229 13.3753 1.07308C13.2572 1.02527 13.1299 1 13 1H6ZM12 3H6C5.44771 3 5 3.44771 5 4V20C5 20.5523 5.44772 21 6 21H19C19.5523 21 20 20.5523 20 20V11H13C12.4477 11 12 10.5523 12 10V3ZM18.5858 9.00003L14 4.41424V9.00003H18.5858Z" fill="#000000"></path> </g></svg>
         <img src="white-screen.png" alt="" style="z-index: 2; position: absolute; left: 10px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
         <b><h1 style="position: absolute; top: 0px; left: 55px; font-size: 18px; font-weight: 700" id="firstname-tg">Программа тренировок</h1></b>
         <h3 style="position: absolute; top: 20px; left: 56px; font-size: 12px;" id="username-tg">Весь комплекс упражнений в фор...</h1>
-        <div> 
+        <div onclick="test();"> 
             <svg style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; right: 25px; transform: scale(0.8);" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Download"> <path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
             <img id="check-img" src="white-screen.png" alt="" style="z-index: 2; position: absolute; right: 20px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
         </div>
     </div>
 
      <div class="train-description-block" style="display: none;" id="ghgh">
-        <svg style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; left: 15px;" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} </style> <path class="st0" d="M27,28h-8.1c-1.2,0-2.3-0.5-3.2-1.3L3,14l7-8v0c0,3.9,4.1,8,8,8h1v0c-0.1,4.5,1.6,7.8,6,9.2 c0.3,0.1,0.5,0.2,0.8,0.2l0,0c1.2,0.3,2,1.6,1.7,2.8L27,28z"></path> <path class="st0" d="M1,16l13.7,13.7c0.8,0.8,2,1.3,3.2,1.3H27"></path> <circle class="st0" cx="10.5" cy="15.5" r="1.5"></circle> <line class="st0" x1="15" y1="19" x2="19.5" y2="19"></line> <line class="st0" x1="17" y1="22" x2="22.5" y2="22"></line> <path class="st0" d="M28,1l-7.3,7.3C19,10,18.4,12.4,19,14.7l0,0"></path> <path class="st0" d="M10,7L10,7c1.9-0.6,3.6-2,4.6-3.7L16,1"></path> </g></svg>
-        <img src="white-screen.png" alt="" style="z-index: 2; position: absolute; left: 10px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
-        <b><h1 style="position: absolute; top: 0px; left: 55px; font-size: 18px; font-weight: 700" id="firstname-tg">15 отжиманий</h1></b>
-        <h3 style="position: absolute; top: 19px; left: 57px; font-size: 12px;" id="username-tg">Силовые</h1>
-        <div style="display: block;" onclick="document.getElementById('ghgh').style.display = 'none'; document.body.style.overflow = 'auto';"> <!---->
-            <svg class="train-check-button" style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; right: 25px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke-width="9" d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" fill="#0F0F0F"></path> </g></svg>
+        <div style="position: fixed; width: 100%; background-color: #000; height: 60px;">
+            <svg style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; left: 15px;" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} </style> <path class="st0" d="M27,28h-8.1c-1.2,0-2.3-0.5-3.2-1.3L3,14l7-8v0c0,3.9,4.1,8,8,8h1v0c-0.1,4.5,1.6,7.8,6,9.2 c0.3,0.1,0.5,0.2,0.8,0.2l0,0c1.2,0.3,2,1.6,1.7,2.8L27,28z"></path> <path class="st0" d="M1,16l13.7,13.7c0.8,0.8,2,1.3,3.2,1.3H27"></path> <circle class="st0" cx="10.5" cy="15.5" r="1.5"></circle> <line class="st0" x1="15" y1="19" x2="19.5" y2="19"></line> <line class="st0" x1="17" y1="22" x2="22.5" y2="22"></line> <path class="st0" d="M28,1l-7.3,7.3C19,10,18.4,12.4,19,14.7l0,0"></path> <path class="st0" d="M10,7L10,7c1.9-0.6,3.6-2,4.6-3.7L16,1"></path> </g></svg>
+            <img src="white-screen.png" alt="" style="z-index: 2; position: absolute; left: 10px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
+            <b><h1 style="position: absolute; top: 0px; left: 55px; font-size: 18px; font-weight: 700; color: #fff" id="firstname-tg">15 отжиманий</h1></b>
+            <h3 style="position: absolute; top: 19px; left: 57px; font-size: 12px; color: #fff;" id="username-tg">Силовые</h1>
+            <div style="display: block;" onclick="document.getElementById('ghgh').style.display = 'none'; document.body.style.overflow = 'auto';"> <!---->
+            <svg class="train-check-button" style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; right: 25px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke-width="9" d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" fill="#fff"></path> </g></svg>
             <!--<img id="check-img" src="white-screen.png" alt="" style="z-index: 2; position: absolute; right: 20px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">-->
+            </div>
         </div>
         <video controls loop autoplay width="90%" style="position: absolute; top: 60px; border-radius: 15px; margin: 15px; max-height: 200px;">
-            <source src="flower.webm" type="video/webm" />
+            <source src="pushups-video.mp4" type="video/mp4" />
         </video>
         <h1 style="position: absolute; top: 270px; left: 20px; border-bottom: 2px solid #000; width: 90%; font-weight: 700;">15 отжиманий</h1>
         <h3 style="position: absolute; top: 330px; left: 20px; width: 90%; font-weight: 300; font-size: 14px;">Вам не обязательно попадать в армию, чтобы получить все выгоды от выполнения отжиманий. Отжимания – отличный способ развить мускулатуру груди и рук; а когда вы станете сильнее, можно будет усложнить это упражнение. Простые отжимания не требуют какого-либо инвентаря, кроме ваших рук и тела, их можно делать где угодно на твердой поверхности, где достаточно места, чтобы вытянуться на полу.</h3>
-        <h3 style="position: absolute; top: 510px; left: 20px; width: 90%; font-weight: 300; font-size: 14px;">Вам не обязательно попадать в армию, чтобы получить все выгоды от выполнения отжиманий. Отжимания – отличный способ развить мускулатуру груди и рук; а когда вы станете сильнее, можно будет усложнить это упражнение. Простые отжимания не требуют какого-либо инвентаря, кроме ваших рук и тела, их можно делать где угодно на твердой поверхности, где достаточно места, чтобы вытянуться на полу.</h3>
-        <h3 style="position: absolute; top: 710px; left: 20px; width: 90%; font-weight: 300; font-size: 14px;">Вам не обязательно попадать в армию, чтобы получить все выгоды от выполнения отжиманий. Отжимания – отличный способ развить мускулатуру груди и рук; а когда вы станете сильнее, можно будет усложнить это упражнение. Простые отжимания не требуют какого-либо инвентаря, кроме ваших рук и тела, их можно делать где угодно на твердой поверхности, где достаточно места, чтобы вытянуться на полу.</h3>
+        <div class="train-finish-block" onclick="document.getElementById('ghgh').style.display = 'none'; document.body.style.overflow = 'auto';">
+            <h1 style="font-size: 15px; font-weight: 700; padding: 10px; color: #fff;">Завершить</h1>
+        </div>
     </div>
+
 
     <h1 style="margin: 20px 15px 15px 15px; border-bottom: 1px solid #000; min-width: 60%; max-width: 390px; font-weight: 700;">Разминка</h1>
 
@@ -580,10 +606,6 @@
         </div>
     </div>
 
-    <!--<div class="train-finish-block" onclick="location.href = 'https://maxutkoe.github.io/MainFFF/'">
-        <h1 style="font-size: 15px; font-weight: 700; padding: 20px; color: #fff;">Завершить</h1>
-    </div>-->
-
     </body>
 
     <script>
@@ -599,19 +621,30 @@
         tg.requestFullscreen();
         tg.expand();
         // const wallet = tonConnectUI.wallet.account.address;
-        
-        tg.SettingsButton.show();
-        tg.onEvent('settingsButtonClicked', function(){
-            tg.showAlert("Настройки");
-        });
+
         tg.MainButton.show();
-        tg.BackButton.show();
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Завершить");
         tg.MainButton.onClick(async function(){
             location.href = "https://maxutkoe.github.io/MainFFF/";
         });
+
+        function saveFile(url, filename) {
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename || "file-name";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function test(){
+            const file = new Blob(["Hello, file!"], { type: "application/json" });
+            const url = window.URL.createObjectURL(file);
+            saveFile(url, "myFile.json");
+            window.URL.revokeObjectURL(url);
+        }
 
         document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
         document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
