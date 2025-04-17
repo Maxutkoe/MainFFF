@@ -12,6 +12,7 @@
         <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
         <style src="https://yarnpkg.com/en/package/normalize.css"></style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     </head>
 <style>
@@ -52,6 +53,20 @@
             background-color:rgb(207, 207, 207);
             border-radius: 15px;
             margin: 15px 10px 10px 10px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+        }
+
+        .train-description-block{
+            position: fixed;
+            width: 100%;
+            height: 700px;
+            z-index: 100;
+            left: 0px;
+            bottom: 0px;
+            background-color:rgb(207, 207, 207);
+            border-radius: 15px 15px 0px 0px;
             -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
@@ -351,6 +366,21 @@
         </div>
     </div>
 
+     <div class="train-description-block">
+        <svg style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; left: 15px;" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} </style> <path class="st0" d="M27,28h-8.1c-1.2,0-2.3-0.5-3.2-1.3L3,14l7-8v0c0,3.9,4.1,8,8,8h1v0c-0.1,4.5,1.6,7.8,6,9.2 c0.3,0.1,0.5,0.2,0.8,0.2l0,0c1.2,0.3,2,1.6,1.7,2.8L27,28z"></path> <path class="st0" d="M1,16l13.7,13.7c0.8,0.8,2,1.3,3.2,1.3H27"></path> <circle class="st0" cx="10.5" cy="15.5" r="1.5"></circle> <line class="st0" x1="15" y1="19" x2="19.5" y2="19"></line> <line class="st0" x1="17" y1="22" x2="22.5" y2="22"></line> <path class="st0" d="M28,1l-7.3,7.3C19,10,18.4,12.4,19,14.7l0,0"></path> <path class="st0" d="M10,7L10,7c1.9-0.6,3.6-2,4.6-3.7L16,1"></path> </g></svg>
+        <img src="white-screen.png" alt="" style="z-index: 2; position: absolute; left: 10px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
+        <b><h1 style="position: absolute; top: 0px; left: 55px; font-size: 18px; font-weight: 700" id="firstname-tg">15 отжиманий</h1></b>
+        <h3 style="position: absolute; top: 19px; left: 57px; font-size: 12px;" id="username-tg">Силовые</h1>
+        <div style="display: block;">
+            <svg class="train-check-button" style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; right: 25px; transform: scale(0.8);" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <img id="check-img" src="green-screen.png" alt="" style="z-index: 2; position: absolute; right: 20px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
+        </div>
+        <div style="display: none;"> <!---->
+            <svg class="train-check-button" style="width: 30px; height: 30px; z-index: 5; position: absolute; top: 15px; right: 25px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke-width="9" d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" fill="#0F0F0F"></path> </g></svg>
+            <img id="check-img" src="white-screen.png" alt="" style="z-index: 2; position: absolute; right: 20px; top: 10px; border-radius: 15%; width: 40px; height: 40px;">
+        </div>
+    </div>
+
     <h1 style="margin: 20px 15px 15px 15px; border-bottom: 1px solid #000; min-width: 60%; max-width: 390px; font-weight: 700;">Разминка</h1>
 
 
@@ -530,6 +560,15 @@
     </div>-->
 
     </body>
+
+    <script>
+    $(document).ready(function(){
+        $(".swipe").click(function(){
+            $(".swipe").fadeOut(3000);
+        });
+    });
+</script>
+
     <script>
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
