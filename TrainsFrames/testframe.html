@@ -541,31 +541,12 @@
             tg.showAlert("Настройки");
         });
         tg.MainButton.show();
+        tg.BackButton.show();
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
-        tg.MainButton.setText("Перейти");
+        tg.MainButton.setText("Завершить");
         tg.MainButton.onClick(async function(){
-            //dd();
-            const transaction = {
-                validUntil: Math.round(Date.now() / 1000) + 100,
-                messages: [
-                    {
-                        address: "UQCwZJMC1YRv_kG2Q6CF0H74t3IcWrRjJn1aE4nDWYj_ILUp",
-                        amount: 2500000000, //250000000 - 0.25 TON
-                    }
-                ]
-            };
-
-            try{
-                await tonConnectUI.sendTransaction(transaction);
-                tg.showAlert("Успешно оплачено!");
-            }
-            catch(e){
-                tg.showAlert("Оплата не прошла");
-                console.error(e);
-            }
-            
-            
+            location.href = "https://maxutkoe.github.io/MainFFF/";
         });
 
         document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
@@ -578,9 +559,6 @@
         tg.BackButton.onClick(function(){
                 location.href = "https://maxutkoe.github.io/MainFFF/";
             });
-        tg.onEvent('backButtonClicked', function(){
-            location.href = "https://maxutkoe.github.io/MainFFF/";
-        });
 
         tg.ready();
 
@@ -603,14 +581,6 @@
 
         function Frame(frame){
             location.href = `./TrainsFrames/${frame}.html`
-            tg.BackButton.show();
-            tg.BackButton.onClick(function(){
-                location.href = "./index.html";
-            });
-            tg.onEvent('backButtonClicked', function(){
-                location.href = "./index.html";
-            });
-
         }
 
         

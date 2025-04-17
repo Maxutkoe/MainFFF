@@ -102,8 +102,8 @@
             -moz-box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.22);
             box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.22);
             position: relative;
-            /*background-color: #000;*/
-            background-image: url("dep.gif");
+            background-color:rgb(39, 32, 32);
+            /*background-image: url("dep.gif");*/
             background-position: -75% 50%;
             
         }
@@ -329,10 +329,10 @@
         <h1></h1>
     </div>
     <div class="profile-up">
-        <img id="profile-img-tg" src="dep.gif" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
+        <img id="profile-img-tg" src="1.png" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
         <b><h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg">//...</h1></b>
         <h3 style="position: absolute; top: 18px; left: 55px; font-size: 12px;" id="username-tg">lTheMkl</h1>
-        <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>
+        <!--<div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>-->
     </div>
 
 
@@ -480,13 +480,14 @@
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
         tg.expand();
+        tg.BackButton.hide();
 
         tg.BackButton.onClick(function(){
                 location.href = "index.html";
             });
-        tg.onEvent('backButtonClicked', function(){
+        /*tg.onEvent('backButtonClicked', function(){
             location.href = "index.html";
-        });
+        });*/
         
         tg.SettingsButton.show();
         tg.onEvent('settingsButtonClicked', function(){
@@ -549,14 +550,6 @@
 
         function Frame(frame){
             location.href = `./TrainsFrames/${frame}.html`
-            tg.BackButton.show();
-            tg.BackButton.onClick(function(){
-                location.href = "./index.html";
-            });
-            tg.onEvent('backButtonClicked', function(){
-                location.href = "./index.html";
-            });
-
         }
 
         /*async function NewsUpdate(){
