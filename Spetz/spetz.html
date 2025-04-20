@@ -572,11 +572,28 @@ function updateTime() {
         tg.MainButton.onClick(function() {
             if(start == true){
                 interval = setInterval(updateTime, 1000);
-                let start = true;
-                let pause = false;
-                let reset = false;
+                let start = false;
+                let pause = true;
+                let reset = true;
                 tg.MainButton.setText("Закончить");
                 tg.MainButton.color = "rgb(109, 210, 37)";
+
+            }
+
+            else if(pause == true && reset == true){
+                clearInterval(interval);
+                seconds = 0;
+                minutes = 0;
+                hours = 0;
+                timer.textContent = '00:00:00';
+                start = true;
+                pause = false;
+                reset = false;
+                tg.MainButton.setText("Продолжить");
+                tg.SecondaryButton.show();
+                tg.SecondaryButton.setText("Сбросить");
+                tg.MainButton.color = "#000";
+                tg.MainButton.color = "rgb(210, 37, 37)";
 
             }
 
@@ -586,6 +603,8 @@ function updateTime() {
                 pause = false;
                 tg.MainButton.setText("Начать");
             }
+
+            
         });
 
         
