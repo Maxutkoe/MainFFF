@@ -573,7 +573,7 @@ function updateTime() {
                 interval = setInterval(updateTime, 1000);
                 let start = false;
                 let pause = true;
-                tg.MainButton.setText("Закончить");
+                tg.MainButton.setText("Остановить");
                 tg.MainButton.color = "rgb(109, 210, 37)";
 
             }
@@ -586,11 +586,11 @@ function updateTime() {
                 timer.textContent = '00:00:00';
                 start = true;
                 pause = false;
-                tg.MainButton.setText("Продолжить");
+                tg.MainButton.setText("Сбросить");
                 tg.SecondaryButton.show();
-                tg.SecondaryButton.setText("Сбросить");
-                tg.MainButton.color = "#000";
+                tg.SecondaryButton.setText("Запустить");
                 tg.MainButton.color = "rgb(210, 37, 37)";
+                tg.SecondaryButton.color = "#000";
 
             }
 
