@@ -572,9 +572,17 @@ function updateTime() {
             if(start == true){
                 interval = setInterval(updateTime, 1000);
                 tg.MainButton.setText("Остановить");
-                tg.MainButton.color = "rgb(109, 210, 37)";
+                tg.MainButton.color = "rgb(210, 37, 37)"; 
                 start = false;
                 pause = true;
+            }
+
+            else if(pause == true){
+                clearInterval(interval);
+                start = true;
+                pause = false;
+                tg.MainButton.setText("Продолжить");
+                tg.MainButton.color = "rgb(109, 210, 37)";
             }
 
             else if(reset == true){
@@ -600,14 +608,6 @@ function updateTime() {
                     tg.SecondaryButton.hide();
                 });
 
-            }
-
-            else if(pause == true){
-                clearInterval(interval);
-                start = true;
-                pause = false;
-                tg.MainButton.setText("Продолжить");
-                tg.MainButton.color = "rgb(210, 37, 37)";
             }
         });
 
