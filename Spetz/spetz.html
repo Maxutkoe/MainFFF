@@ -569,8 +569,8 @@ function updateTime() {
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Начать");
-
-        if(pause == true){
+        setInterval(function(){
+            if(start == true){
             interval = setInterval(updateTime, 1000);
             let start = true;
             let pause = false;
@@ -580,12 +580,15 @@ function updateTime() {
 
         }
 
-        else if(start == true){
+        else if(pause == true){
             clearInterval(interval);
             start = false;
             pause = true;
             tg.MainButton.setText("Начать");
         }
+        }, 1000);
+
+        
 
 
         function saveFile(url, filename) {
