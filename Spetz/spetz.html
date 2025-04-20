@@ -570,6 +570,7 @@ function updateTime() {
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Начать");
         setInterval(function(){
+            tg.MainButton.onClick(function() {
             if(start == true){
             interval = setInterval(updateTime, 1000);
             let start = true;
@@ -578,7 +579,7 @@ function updateTime() {
             tg.MainButton.setText("Закончить");
             tg.MainButton.color = "rgb(109, 210, 37)";
 
-        }
+            }
 
         else if(pause == true){
             clearInterval(interval);
@@ -586,6 +587,7 @@ function updateTime() {
             pause = true;
             tg.MainButton.setText("Начать");
         }
+            });
         }, 1000);
 
         
