@@ -598,8 +598,12 @@ function updateTime() {
             
         });
 
-        function answer() {    
-          tg.LocationManager.getLocation(function(location_data){
+        function answer() {  
+            if (!tg.LocationManager.isInited) {
+                tg.LocationManager.init();
+                // return alert('Location not inited yet!');
+            }  
+            tg.LocationManager.getLocation(function(location_data){
                 const latitude = location_data.latitude;
                 const longitude = location_data.longitude;
 
