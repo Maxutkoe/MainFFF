@@ -578,23 +578,38 @@ function updateTime() {
 
             }
 
-            else if(pause == true){
-                clearInterval(interval);
-                seconds = 0;
-                minutes = 0;
-                hours = 0;
-                timer.textContent = '00:00:00';
-                start = true;
-                pause = false;
-                tg.MainButton.setText("Сбросить");
-                tg.SecondaryButton.show();
-                tg.SecondaryButton.setText("Запустить");
-                tg.MainButton.color = "rgb(210, 37, 37)";
-                tg.SecondaryButton.color = "#000";
+            else if(reset == true){
+                    clearInterval(interval);
+                    seconds = 0;
+                    minutes = 0;
+                    hours = 0;
+                    timer.textContent = '00:00:00';
+                    start = true;
+                    pause = false;
+                    tg.MainButton.setText("Сбросить");
+                    tg.SecondaryButton.show();
+                    tg.SecondaryButton.setText("Запустить");
+                    tg.MainButton.color = "rgb(210, 37, 37)";
+                    tg.SecondaryButton.color = "#000";
+                    tg.SecondaryButton.textColor = "#fff";
+                    tg.SecondaryButton.onClick(function(){
+                    interval = setInterval(updateTime, 1000);
+                    let start = true;
+                    let pause = false;
+                    tg.MainButton.setText("Остановить");
+                    tg.MainButton.color = "rgb(109, 210, 37)";
+                    tg.SecondaryButton.hide();
+                });
 
             }
 
-            
+            else if(pause == true){
+                clearInterval(interval);
+                start = true;
+                pause = false;
+                tg.MainButton.setText("Продолжить");
+                tg.MainButton.color = "rgb(210, 37, 37)";
+            }
         });
 
         
