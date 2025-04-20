@@ -571,11 +571,10 @@ function updateTime() {
         tg.MainButton.onClick(function() {
             if(start == true){
                 interval = setInterval(updateTime, 1000);
-                let start = false;
-                let pause = true;
                 tg.MainButton.setText("Остановить");
                 tg.MainButton.color = "rgb(109, 210, 37)";
-
+                start = false;
+                pause = true;
             }
 
             else if(reset == true){
@@ -605,7 +604,7 @@ function updateTime() {
 
             else if(pause == true){
                 clearInterval(interval);
-                // start = true;
+                start = true;
                 pause = false;
                 tg.MainButton.setText("Продолжить");
                 tg.MainButton.color = "rgb(210, 37, 37)";
