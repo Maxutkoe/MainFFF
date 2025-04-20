@@ -525,7 +525,6 @@ let interval;
 
 let start = false;
 let pause = true;
-let reset = false;
 
 function updateTime() {
   seconds++;
@@ -574,13 +573,12 @@ function updateTime() {
                 interval = setInterval(updateTime, 1000);
                 let start = false;
                 let pause = true;
-                let reset = true;
                 tg.MainButton.setText("Закончить");
                 tg.MainButton.color = "rgb(109, 210, 37)";
 
             }
 
-            else if(pause == true && reset == true){
+            else if(pause == true){
                 clearInterval(interval);
                 seconds = 0;
                 minutes = 0;
@@ -588,20 +586,12 @@ function updateTime() {
                 timer.textContent = '00:00:00';
                 start = true;
                 pause = false;
-                reset = false;
                 tg.MainButton.setText("Продолжить");
                 tg.SecondaryButton.show();
                 tg.SecondaryButton.setText("Сбросить");
                 tg.MainButton.color = "#000";
                 tg.MainButton.color = "rgb(210, 37, 37)";
 
-            }
-
-            else if(pause == true){
-                clearInterval(interval);
-                start = true;
-                pause = false;
-                tg.MainButton.setText("Начать");
             }
 
             
