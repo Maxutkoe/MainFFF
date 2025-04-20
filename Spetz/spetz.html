@@ -569,26 +569,24 @@ function updateTime() {
         tg.MainButton.color = "#000";
         tg.MainButton.textColor = "#FFF";
         tg.MainButton.setText("Начать");
-        setInterval(function(){
-            tg.MainButton.onClick(function() {
+        tg.MainButton.onClick(function() {
             if(start == true){
-            interval = setInterval(updateTime, 1000);
-            let start = true;
-            let pause = false;
-            let reset = false;
-            tg.MainButton.setText("Закончить");
-            tg.MainButton.color = "rgb(109, 210, 37)";
+                interval = setInterval(updateTime, 1000);
+                let start = true;
+                let pause = false;
+                let reset = false;
+                tg.MainButton.setText("Закончить");
+                tg.MainButton.color = "rgb(109, 210, 37)";
 
             }
 
-        else if(pause == true){
-            clearInterval(interval);
-            start = false;
-            pause = true;
-            tg.MainButton.setText("Начать");
-        }
-            });
-        }, 1000);
+            else if(pause == true){
+                clearInterval(interval);
+                start = false;
+                pause = true;
+                tg.MainButton.setText("Начать");
+            }
+        });
 
         
 
