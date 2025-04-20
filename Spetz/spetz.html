@@ -582,8 +582,8 @@ function updateTime() {
 
             else if(pause == true){
                 clearInterval(interval);
-                start = false;
-                pause = true;
+                start = true;
+                pause = false;
                 tg.MainButton.setText("Начать");
             }
         });
