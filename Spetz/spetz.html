@@ -12,8 +12,8 @@
         <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
         <style src="https://yarnpkg.com/en/package/normalize.css"></style>
-        <script>window.yaContextCb=window.yaContextCb||[]</script>
-        <script src="https://yandex.ru/ads/system/context.js" async></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://api-maps.yandex.ru/2.0-stable/?apikey=YOUR_APY_KEY&load=package.full&lang=ru-RU" type="text/javascript"></script>
 
     </head>
 <style>
@@ -61,19 +61,124 @@
             box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
         }
 
-        .main-block{
+        .train-block{
+            position: relative;
+            min-width: 60%;
+            max-width: 400px;
+            height: 60px;
+            background-color:rgb(207, 207, 207);
+            border-radius: 15px;
+            margin: 15px 10px 10px 10px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+        }
+
+        @keyframes move-up {
+            0% {
+                transform: translateY(1000px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes move-down {
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(1000px);
+            }
+        }
+
+        .train-description-block{
+            position: fixed;
+            width: 100%;
+            height: 400px;
+            z-index: 100;
+            left: 0px;
+            bottom: 0px;
+            background-color:rgb(207, 207, 207);
+            border-radius: 15px 15px 0px 0px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            /* From https://css.glass */
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(14.3px);
+            -webkit-backdrop-filter: blur(14.3px);
+            animation: move-up 0.5s ease;
+            /*transition: transform 1s ease-in;*/
+        }
+
+        .train-finish-block{
+            position: relative;
+            min-width: 95%;
+            max-width: 400px;
+            height: 60px;
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            background-color:rgb(109, 210, 37);
+            border-radius: 15px;
+            margin: 50px 10px 10px 10px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+        }
+
+        .train-check-button:hover{
+            transform: scale(1.1);
+        }
+
+        .map-block{
             margin: 35px 10px 10px 10px;
             min-width: 60%;
             max-width: 400px;
-            height: 200px;
+            height: 520px;
             border: 0px solid #000;
             border-radius: 15px;
             -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
             position: relative;
-            background-image: url("img1.jpg");
+            /*background-image: url("img1.jpg");*/
             background-size: cover;
+            background-color:rgb(228, 190, 190);
+        }
+
+        .map-bottom-block{
+            min-width: 100%;
+            max-width: 400px;
+            height: 80px;
+            border: 0px solid #000;
+            border-radius: 15px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            position: absolute;
+            bottom: 0px;
+            background-color:rgb(0, 0, 0);
+        }
+
+        .map-upper-block{
+            min-width: 40%;
+            margin: 0px 0px 0px 30%;
+            max-width: 400px;
+            height: 35px;
+            border: 0px solid #000;
+            border-radius: 20px;
+            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
+            position: absolute;
+            top: 15px;
+            background-color:rgb(0, 0, 0);
+            z-index: 100;
+            text-align: center;
         }
 
         .ad-block{
@@ -102,8 +207,8 @@
             -moz-box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.22);
             box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.22);
             position: relative;
-            background-color:rgb(39, 32, 32);
-            /*background-image: url("dep.gif");*/
+            /*background-color: #000;*/
+            background-image: url("dep.gif");
             background-position: -75% 50%;
             
         }
@@ -276,12 +381,12 @@
             -webkit-backdrop-filter: blur(17.6px);
         }
 
-        .info-deposity-button{
-            width: 120px;
+        .ton-deposity-button{
+            width: 60px;
             z-index: 0;
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 115px;
+            left: 145px;
             height: 56px;
             border: 0px solid #000;
             border-radius: 12px;
@@ -309,154 +414,173 @@
             backdrop-filter: blur(17.6px);
             -webkit-backdrop-filter: blur(17.6px);
         }
-
-        .news-block{
-            display: inline-block;
-            margin: 35px 10px 10px 10px;
-            width: 150px;
-            height: 150px;
-            border: 0px solid #000;
-            border-radius: 12px;
-            -webkit-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
-            -moz-box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
-            box-shadow: 0px 0px 29px 0px rgba(34, 60, 80, 0.23);
-            position: relative;
-            background-color: #fff;
-        }
     </style>
     <body>
     <div class="upper-panel">
         <h1></h1>
     </div>
     <div class="profile-up">
-        <img id="profile-img-tg" src="1.png" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
-        <b><h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg">//.</h1></b>
-        <h3 style="position: absolute; top: 18px; left: 55px; font-size: 12px;" id="username-tg">TheMk</h1>
-        <div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>
+        <img id="profile-img-tg" src="dep.gif" alt="" style="position: absolute; left: 5px; top: 5px; border-radius: 50%; width: 40px; height: 40px;">
+        <b><h1 style="position: absolute; top: -5px; left: 55px; font-size: 20px;" id="firstname-tg">//...</h1></b>
+        <h3 style="position: absolute; top: 18px; left: 55px; font-size: 12px;" id="username-tg">lTheMkl</h1>
+        <!--<div id="ton-connect" style="position: absolute; right: 0px; transform: scale(0.8); top: 5px;"></div>-->
     </div>
 
-
-
-    <div class="deposit-block">
-        <div class="deposity-button"></div>
-        <div class="info-deposity-button">
-            <h1 style="position: absolute; top: 0px; left: 10px; font-size: 10px; color: #828282; font-weight: 500;">Вы прошли</h1>
-            <h1 style=" position: absolute; top: 4px; left: 10px; font-size: 25px; color: white; font-weight: 500;">1000м</h1>
+    <div class="map-block">
+        <div class="map-upper-block">
+            <h1 style="margin: 10px 0px 0px 0px; font-size: 14px; color: white; font-weight: 600;">1:02:30</h1>
         </div>
-
-        <h1 style="position: absolute; top: 18px; left: 25px; font-size: 20px; color: white; font-weight: 500;">₽</h1>
-        <h1 style="position: absolute; top: -5px; left: 37px; font-size: 45px; color: white; font-weight: 900;" id="ton-balance-full">20
-        <h1 style="position: absolute; top: 13px; left: 85px; font-size: 35px; color: #828282; font-weight: 700;" id="ton-balance-decimal">.55</h1></h1>
-
-        <div class="buttons-bg-deposit">
-            <button type="submit" id="send-deposit-button"><img src="arrow-up-black.png" alt="" style="width: 30xp; height: 30px; margin: 3px 1px 0px 0px;"></button>
-            <button type="submit" id="get-deposit-button"><img src="arrow-sm-down-black.png" alt="" style="width: 30xp; height: 30px; margin: 3px 1px 0px 0px;"></button>
-            <button type="submit" id="withdraw-deposit-button"><img src="withdraw-svgrepo-com-black.png" alt="" style="width: 30xp; height: 30px; margin: 6px 1px 0px 0px;"></button>
+        <div id="map" style="position: absolute; width: 100%; height: 500px; border-radius: 15px;">
+            <div id="myMap" style="position: absolute; width: 100%; height: 500px; border-radius: 15px; overflow: hidden;"></div>
         </div>
-
-        <button type="submit" onclick="start()" class="deposit-button">
-            <h1 style="position: absolute; top: -3px; left: 10px; font-size: 14px; color: #828282;">Задания</h1>
-            <h1 style="position: absolute; top: 13px; left: 15px; font-size: 17px; color: #fff;">3 задания...<a href="#10days"><img src="arrow-up-right-svgrepo-com.png" alt="" style="width: 15xp; height: 15px; "></a></h1>
-            <h1 style="position: absolute; top: 33px; left: 15px; font-size: 17px; color: #fff;">5 упражнений...<a href="#10days"><img src="arrow-up-right-svgrepo-com.png" alt="" style="width: 15xp; height: 15px; "></a></h1>
-            <h1 style="position: absolute; top: 53px; left: 15px; font-size: 17px; color: #fff;">3 задания...<a href="#10days"><img src="arrow-up-right-svgrepo-com.png" alt="" style="width: 15xp; height: 15px; "></a></h1>
-        </button>
-
-        
-
-    </div>
-
-    <div id="news-main-block" style="background-color: transparent; overflow-y: none; overflow-x: auto; white-space: nowrap;">
-        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-image: url('img2.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Названы шесть при...</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Эксперты журнала Men Today назва...</h1>
-            </div>
+        <div class="map-bottom-block">
+            <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">17.20 км</h1>
+            <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">12 км/ч | 1 265 кал | 62 м</h1>
         </div>
-        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-image: url('img3.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренер предупредила...</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Тренер по балету и растяжке Акулина...</h1>
-            </div>
-        </div>
-        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-image: url('img4.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Названы шесть при...</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Эксперты журнала Men Today назва...</h1>
-            </div>
-        </div>
-        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-image: url('img1.jpg'); background-size: cover; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренер предупредила...</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Тренер по балету и растяжке Акулина...</h1>
-            </div>
-        </div>
-        <div class="news-block" onclick="tg.openLink('https://t.me/TheMkStudio')">
-            <div style="width: 100%; height: 90px; background-color: #fff; border-radius: 10px 10px 0px 0px; border-bottom: 2px solid #000; ">
-                <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренировки</h1>
-                <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Начинающий | Средний | Сложный</h1>
-            </div>
-        </div>
-    </div>
-    
-
-    <div class="main-block" onclick="Frame('testframe')">
-        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">Ежедневные тренировки</h1>
-        <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Начинающий | Средний | Сложный</h1>
-    </div>
-
-
-
-    <div class="ad-block">
-        <h1 style="position: absolute; bottom: 18px; left: 15px; font-size: 25px; color: white; font-weight: 800;">Реклама</h1>
-    </div>
-
-
-
-
-    <div class="main-block" onclick="Frame1('spetz')">
-        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">Бег</h1>
-        <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Full | 2 часа | 2 раза в неделю</h1>
-    </div>
-
-
-    <div class="main-block" id="10days">
-        <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">Скоро</h1>
-        <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">Full | 2 часа | 2 раза в неделю</h1>
     </div>
 
     </body>
 
+    <script type="text/javascript">
+  let headerFont = 'Edu AU VIC WA NT Pre';
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    ymaps.ready(init);
+    function init(){
+        // Создание карты.
+        var myMap = new ymaps.Map("myMap", {
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            // Чтобы не определять координаты центра карты вручную,
+            // воспользуйтесь инструментом Определение координат.
+            center: [51.71716, 39.17062],
+            // Уровень масштабирования. Допустимые значения:
+            // от 0 (весь мир) до 19.
+            zoom: 17,
+        });
+         myMap.controls.remove("mapTools")
+    .remove("typeSelector")
+    .remove("searchControl")
+    .remove("trafficControl")
+    .remove("miniMap")
+    .remove("scaleLine")
+    .remove("routeEditor")
+    .remove("smallZoomControl");
+
+    let Person = new ymaps.Placemark([51.71716, 39.17062], {
+    },{
+	iconLayout: 'default#image',
+	iconImageHref: "https://kan949.github.io/motokalendar2023sibir/pic/1_.gif",
+	iconImageSize: [40, 40],
+    iconImageOffset: [-16, -32],
+    });
+
+    let myPolyline = new ymaps.GeoObject({
+        geometry: {
+            type: "LineString",
+            coordinates: [
+            [51.71716, 39.17062],
+            [51.71719, 39.17042],
+            [51.71819, 39.17142],
+            [51.71799, 39.17002]
+            ]
+        }}, {
+            // Задаем опции геообъекта.
+            // Включаем возможность перетаскивания ломаной.
+            draggable: true,
+            // Цвет линии.
+            strokeColor: "#000",
+            // Ширина линии.
+            strokeWidth: 4
+        });
+
+
+myMap.geoObjects.add(Person);
+myMap.geoObjects.add(myPolyline);
+
+    
+}
+
+
+</script>
     <script>
-      const truncateToTwo = num => Math.floor(num * 100) / 100;
-      let balance = 0;
 
-        window.onload = function(){
-            setTimeout(function(){
-                let api = new XMLHttpRequest();
-		        const wallet = tonConnectUI.wallet.account.address;//'UQANL1PP96rxkyGZfo-pgGd6m3tBdpwlz9EFR2scmW7xQaKd';//getRandomWallet();
-		        console.log(wallet);
-                const url = `https://tonapi.io/v2/accounts/${wallet}`;//https://tonapi.io/v2/blockchain/accounts/${wallet}/transactions`; //UQANL1PP96rxkyGZfo-pgGd6m3tBdpwlz9EFR2scmW7xQaKd
+    $(document).ready(function(){
+        $(".swipe").click(function(){
+            $(".swipe").fadeOut(3000);
+        });
+    });
+</script>
 
-                api.open('GET', url, true);
-                api.responseType = "json";
-                api.onload = function(){
-                    const status = api.status;
-                    if(status == 200){
-                        console.log(api.response);
-                        balance = api.response.balance / 1000000000;
-                        console.log(truncateToTwo(balance) + " TON");
-                    }
-                    else{
-                        tg.showAlert("НЕ");
-                        console.log("НЕ");
-                    }
-            }
-            api.send();
-            // NewsUpdate();
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.requestFullscreen();
+        tg.expand();
+        // const wallet = tonConnectUI.wallet.account.address;
 
-            }, 1000);
+        tg.MainButton.show();
+        tg.MainButton.color = "#000";
+        tg.MainButton.textColor = "#FFF";
+        tg.MainButton.setText("Завершить");
+        tg.MainButton.onClick(async function(){
+            location.href = "https://maxutkoe.github.io/MainFFF/";
+        });
+
+        function saveFile(url, filename) {
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename || "file-name";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
 
+        function test(){
+            const file = new Blob(["Hello, file!"], { type: "application/json" });
+            const url = window.URL.createObjectURL(file);
+            saveFile(url, "myFile.json");
+            window.URL.revokeObjectURL(url);
+        }
+
+        document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
+        document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
+        document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
+
+        tg.setHeaderColor("#fff");
+        tg.setBottomBarColor("#fff");
+
+        tg.BackButton.onClick(function(){
+                location.href = "https://maxutkoe.github.io/MainFFF/";
+            });
+
+        tg.ready();
+
+        let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
+
+        // alert(tg.initDataUnsafe.user.photo_url);
+        async function dd(){
+            if (!tg.LocationManager.isInited) {
+                tg.LocationManager.init();
+                return alert('Location not inited yet!');
+            }
+
+            tg.LocationManager.getLocation(function(location_data){
+                // alert(location_data);
+                // alert(location_data.speed);
+
+                document.getElementById("firstname-tg").innerHTML = location_data.speed + " M/s";
+            });
+        }
+
+        function Frame(frame){
+            location.href = `./TrainsFrames/${frame}.html`
+        }
+
+        
+    </script>
+
+    
+    <script>
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/MainFFF/refs/heads/main/tonconnect-manifest.json',
             buttonRootId: 'ton-connect'
@@ -480,106 +604,5 @@
                 theme: "DARK"
             },
         };
-
-    
-        
-        let tg = window.Telegram.WebApp;
-        tg.requestFullscreen();
-        tg.expand();
-        
-        tg.SettingsButton.show();
-        tg.onEvent('settingsButtonClicked', function(){
-            tg.showAlert("Настройки");
-        });
-        tg.MainButton.show();
-        tg.MainButton.color = "#000";
-        tg.MainButton.textColor = "#FFF";
-        tg.MainButton.setText("Перейти");
-        tg.MainButton.onClick(async function(){
-            //dd();
-            const transaction = {
-                validUntil: Math.round(Date.now() / 1000) + 100,
-                messages: [
-                    {
-                        address: "UQCwZJMC1YRv_kG2Q6CF0H74t3IcWrRjJn1aE4nDWYj_ILUp",
-                        amount: 25000000, //250000000 - 0.25 TON
-                    }
-                ]
-            };
-
-            try{
-                await tonConnectUI.sendTransaction(transaction);
-                tg.showAlert("Успешно оплачено!");
-            }
-            catch(e){
-                tg.showAlert("Оплата не прошла");
-                console.error(e);
-            }
-            
-            
-        });
-
-        document.getElementById("profile-img-tg").src = tg.initDataUnsafe.user.photo_url;//"https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
-        document.getElementById("firstname-tg").innerHTML = tg.initDataUnsafe.user.first_name;
-        document.getElementById("username-tg").innerHTML = tg.initDataUnsafe.user.username;
-
-        tg.setHeaderColor("#fff");
-        tg.setBottomBarColor("#fff");
-
-        tg.ready();
-
-
-        let yyy = "https://t.me/i/userpic/320/WxMbEn8BZ_JGZVh9KMDLZ8DQOUAPZXeCnNHqLk_fg5lbcCQA7wSEwdaA4JJieppE.svg";
-
-        // alert(tg.initDataUnsafe.user.photo_url);
-        async function dd(){
-            if (!tg.LocationManager.isInited) {
-                tg.LocationManager.init();
-                return alert('Location not inited yet!');
-            }
-
-            tg.LocationManager.getLocation(function(location_data){
-                // alert(location_data);
-                // alert(location_data.speed);
-
-                document.getElementById("firstname-tg").innerHTML = location_data.speed + " M/s";
-            });
-        }
-
-        function Frame(frame){
-            location.href = `./TrainsFrames/${frame}.html`
-        }
-        function Frame1(frame){
-            location.href = `./Spetz/${frame}.html`
-        }
-
-        /*async function NewsUpdate(){
-            for(let i = 0; i < 5; i++){
-                let newsMainBlock = document.getElementById("news-main-block");
-                const newsBlock = document.createElement('div');
-                newsMainBlock.appendChild(newsBlock);
-                newsBlock.className = "news-block";
-                newsBlock.onClick = tg.openLink("https://t.me/TheMkStudio");
-                newsBlock.innerHTML = `
-                <div style="width: 100%; height: 90px; background-image: url('img1.jpg'); background-size: cover; border-radius: 9.5px 9.5px 0px 0px; border-bottom: 2px solid #000; ">
-                    <h1 style="position: absolute; bottom: 28px; left: 8px; font-size: 13px; color: #000; font-weight: 800;">Тренировки</h1>
-                    <h1 style="position: absolute; bottom: 20px; left: 10px; font-size: 8px; color: #828282; font-weight: 500;">Начинающий | Средний | Сложный</h1>
-                </div>
-                `;
-            }
-        }*/
-
-        /*function UpdateBalance(){
-            let full = document.getElementById('ton-balance-full'),
-            decimal = document.getElementById('ton-balance-decimal'),
-            text = `${balance}`,
-            parts = text.split('.');
-
-            full.innerHTML = '' + parts[0];
-            decimal.innerHTML = '.' + (parts[1] || 0);
-            console.log(text);
-            console.log('.' + (parts[1] || 0));
-        }*/
-        
     </script>
 </html>
