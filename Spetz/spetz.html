@@ -614,8 +614,8 @@ function updateTime() {
                 const latitude = location_data.latitude;
                 const longitude = location_data.longitude;
 
-                let startLat = 51.71716;//location_data.latitude - 0.0001;//localStorage.getItem("lat");
-                let startLon = 39.17062;//location_data.longitude - 0.0001;//localStorage.getItem("lon");
+                let startLat = location_data.latitude - 0.0001;//localStorage.getItem("lat");
+                let startLon = location_data.longitude - 0.0001;//localStorage.getItem("lon");
 
                 let ans = getDistanceFromLatLonInKm(startLat, startLon, latitude, longitude);
                 let params = " км";
