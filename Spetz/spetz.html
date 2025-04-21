@@ -434,7 +434,7 @@
             <div id="myMap" style="position: absolute; width: 100%; height: 500px; border-radius: 15px; overflow: hidden;"></div>
         </div>
         <div class="map-bottom-block">
-            <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;">17.20 км</h1>
+            <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;" id="distance">17.20 км</h1>
             <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">12 км/ч | 1 265 кал | 0.062 $MKT</h1>
         </div>
         
@@ -530,6 +530,9 @@ myMap.geoObjects.add(myPolyline);
         tg.requestFullscreen();
         tg.expand();
 
+        setInterval(answer, 10000);
+        
+
         let timer = document.getElementById('timer');
 let startBtn = document.getElementById('startBtn');
 let pauseBtn = document.getElementById('pauseBtn');
@@ -604,7 +607,7 @@ function updateTime() {
         async function answer() {  
             if (!tg.LocationManager.isInited) {
                 tg.LocationManager.init();
-                return alert('Location not inited yet!');
+                return console.log('Location not inited yet!');
             }  
             tg.LocationManager.getLocation(function(location_data){
                 const latitude = location_data.latitude;
@@ -629,7 +632,7 @@ function updateTime() {
                   
                 }
 
-                // status.textContent = "Сегодня вы прошли " + ans.toFixed(2) + params;
+                document.getElementById("distance").innerHTML = " " + ans.toFixed(2) + params;
                 alert("Сегодня вы прошли " + ans.toFixed(2) + params); 
           });
           
