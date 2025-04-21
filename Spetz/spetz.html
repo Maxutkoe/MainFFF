@@ -435,7 +435,7 @@
         </div>
         <div class="map-bottom-block">
             <h1 style="position: absolute; bottom: 18px; left: 25px; font-size: 25px; color: white; font-weight: 800;" id="distance">17.20 км</h1>
-            <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font">12 км/ч | 1 265 кал | 0.062 $MKT</h1>
+            <h1 style="position: absolute; bottom: 8px; left: 25px; font-size: 15px; color: white; font" id="distance-params">12 км/ч | 1 265 кал | 0.062 $MKT</h1>
         </div>
         
     </div>
@@ -634,6 +634,7 @@ function updateTime() {
                 }
 
                 document.getElementById("distance").innerHTML = " " + ans.toFixed(2) + params;
+                document.getElementById("distance-params").innerHTML = (location_data.speed * 1000) + " км/ч " + "  |  " + " 200 кал " + "  |  " + " 0.034 $MKT ";
                 // alert("Сегодня вы прошли " + ans.toFixed(2) + params); 
           });
           
