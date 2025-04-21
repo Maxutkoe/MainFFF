@@ -442,69 +442,6 @@
 
     </body>
 
-    <script type="text/javascript">
-  let headerFont = 'Edu AU VIC WA NT Pre';
-    // Функция ymaps.ready() будет вызвана, когда
-    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-    ymaps.ready(init);
-    function init(){
-        // Создание карты.
-        var myMap = new ymaps.Map("myMap", {
-            // Координаты центра карты.
-            // Порядок по умолчанию: «широта, долгота».
-            // Чтобы не определять координаты центра карты вручную,
-            // воспользуйтесь инструментом Определение координат.
-            center: [51.71716, 39.17062],
-            // Уровень масштабирования. Допустимые значения:
-            // от 0 (весь мир) до 19.
-            zoom: 17,
-        });
-         myMap.controls.remove("mapTools")
-    .remove("typeSelector")
-    .remove("searchControl")
-    .remove("trafficControl")
-    .remove("miniMap")
-    .remove("scaleLine")
-    .remove("routeEditor")
-    .remove("smallZoomControl");
-
-    let Person = new ymaps.Placemark([51.71716, 39.17062], {
-    },{
-	iconLayout: 'default#image',
-	iconImageHref: "https://kan949.github.io/motokalendar2023sibir/pic/1_.gif",
-	iconImageSize: [40, 40],
-    iconImageOffset: [-16, -32],
-    });
-
-    let myPolyline = new ymaps.GeoObject({
-        geometry: {
-            type: "LineString",
-            coordinates: [
-            [51.71716, 39.17062],
-            [51.71719, 39.17042],
-            [51.71819, 39.17142],
-            [51.71799, 39.17002]
-            ]
-        }}, {
-            // Задаем опции геообъекта.
-            // Включаем возможность перетаскивания ломаной.
-            draggable: true,
-            // Цвет линии.
-            strokeColor: "#000",
-            // Ширина линии.
-            strokeWidth: 4
-        });
-
-
-myMap.geoObjects.add(Person);
-myMap.geoObjects.add(myPolyline);
-
-    
-}
-
-
-</script>
-
 <script>
       function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
       var R = 6371; // Radius of the earth in km
@@ -528,7 +465,10 @@ myMap.geoObjects.add(myPolyline);
     <script>
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
-        tg.expand();        
+        tg.expand();   
+
+        ymaps.ready(mapInit);
+
 
         let timer = document.getElementById('timer');
 let startBtn = document.getElementById('startBtn');
@@ -543,6 +483,8 @@ let distanceInterval;
 
 let start = true;
 let pause = false;
+
+let latitude, longitude;
 
 function updateTime() {
   seconds++;
@@ -601,9 +543,7 @@ function updateTime() {
             }
 
             
-        });
-
-        
+        });       
 
         async function answer() {  
             if (!tg.LocationManager.isInited) {
@@ -611,11 +551,11 @@ function updateTime() {
                 return console.log('Location not inited yet!');
             }  
             tg.LocationManager.getLocation(function(location_data){
-                const latitude = location_data.latitude;
-                const longitude = location_data.longitude;
+                latitude = location_data.latitude;
+                longitude = location_data.longitude;
 
-                let startLat = location_data.latitude - 0.0001;//localStorage.getItem("lat");
-                let startLon = location_data.longitude - 0.0001;//localStorage.getItem("lon");
+                let startLat = location_data.latitude - 0.0002;//localStorage.getItem("lat");
+                let startLon = location_data.longitude - 0.0002;//localStorage.getItem("lon");
 
                 let ans = getDistanceFromLatLonInKm(startLat, startLon, latitude, longitude);
                 let params = " км";
@@ -639,6 +579,56 @@ function updateTime() {
                 // alert("Сегодня вы прошли " + ans.toFixed(2) + params); 
           });
           
+        }
+
+        function mapInit(){
+        // Создание карты.
+        var myMap = new ymaps.Map("myMap", {
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            // Чтобы не определять координаты центра карты вручную,
+            // воспользуйтесь инструментом Определение координат.
+            center: [latitude, longitude],
+            // Уровень масштабирования. Допустимые значения:
+            // от 0 (весь мир) до 19.
+            zoom: 17,
+        });
+         myMap.controls.remove("mapTools")
+    .remove("typeSelector")
+    .remove("searchControl")
+    .remove("trafficControl")
+    .remove("miniMap")
+    .remove("scaleLine")
+    .remove("routeEditor")
+    .remove("smallZoomControl"); 
+
+        let Person = new ymaps.Placemark([latitude, longitude], {
+        },{
+	    iconLayout: 'default#image',
+	    iconImageHref: "https://kan949.github.io/motokalendar2023sibir/pic/1_.gif",
+	    iconImageSize: [40, 40],
+        iconImageOffset: [-16, -32],
+        });
+
+        let myPolyline = new ymaps.GeoObject({
+        geometry: {
+            type: "LineString",
+            coordinates: [
+            [51.71716, 39.17062],
+            [51.71719, 39.17042],
+            [51.71819, 39.17142],
+            [51.71799, 39.17002]
+            ]
+        }}, {
+            // Цвет линии.
+            strokeColor: "#000",
+            // Ширина линии.
+            strokeWidth: 4
+        });
+
+
+        myMap.geoObjects.add(Person);
+        myMap.geoObjects.add(myPolyline);
         }
 
 
