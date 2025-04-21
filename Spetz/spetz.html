@@ -633,8 +633,9 @@ function updateTime() {
                   
                 }
 
+                let mkt = (ans / 1000).toFixed(5);
                 document.getElementById("distance").innerHTML = " " + ans.toFixed(2) + params;
-                document.getElementById("distance-params").innerHTML = (location_data.speed * 1000) + " км/ч " + "  |  " + " 200 кал " + "  |  " + " 0.034 $MKT ";
+                document.getElementById("distance-params").innerHTML = (location_data.speed * 1000) + " км/ч " + "  |  " + " 200 кал " + "  |  " + mkt + " $MKT";
                 // alert("Сегодня вы прошли " + ans.toFixed(2) + params); 
           });
           
