@@ -528,10 +528,7 @@ myMap.geoObjects.add(myPolyline);
     <script>
         let tg = window.Telegram.WebApp;
         tg.requestFullscreen();
-        tg.expand();
-
-        setInterval(answer, 10000);
-        
+        tg.expand();        
 
         let timer = document.getElementById('timer');
 let startBtn = document.getElementById('startBtn');
@@ -542,6 +539,7 @@ let seconds = 0;
 let minutes = 0;
 let hours = 0;
 let interval;
+let distanceInterval;
 
 let start = true;
 let pause = false;
@@ -584,6 +582,8 @@ function updateTime() {
         tg.MainButton.onClick(function() {
             if(start == true){
                 interval = setInterval(updateTime, 1000);
+                distanceInterval = setInterval(answer, 10000);
+
                 tg.MainButton.setText("Остановить");
                 tg.MainButton.color = "rgb(210, 37, 37)"; 
                 start = false;
@@ -593,6 +593,7 @@ function updateTime() {
 
             else if(pause == true){
                 clearInterval(interval);
+                clearInterval(distanceInterval);
                 start = true;
                 pause = false;
                 tg.MainButton.setText("Продолжить");
@@ -627,13 +628,13 @@ function updateTime() {
                   }
                   else{
                     ans = ans * 1000; //0.01340 == 13.4 м
-                    params = " метров";
+                    params = " м";
                   }
                   
                 }
 
                 document.getElementById("distance").innerHTML = " " + ans.toFixed(2) + params;
-                alert("Сегодня вы прошли " + ans.toFixed(2) + params); 
+                // alert("Сегодня вы прошли " + ans.toFixed(2) + params); 
           });
           
         }
